@@ -1,7 +1,7 @@
 /// <reference path="../../dts/easeljs/easeljs.d.ts" />
 /// <reference path="../../dts/preloadjs/preloadjs.d.ts" />
 /// <reference path="../../common/js/FPSChecker.ts" />
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -19,9 +19,9 @@ var demo;
             /** bunnyの最小位置Y */
             this.minY = 0;
             /** bunnyの最大位置X */
-            this.maxX = document.documentElement.clientWidth;
+            this.maxX = 960;
             /** bunnyの最大位置Y */
-            this.maxY = document.documentElement.clientHeight;
+            this.maxY = 540;
             /** bunnyの配列 */
             this.bunnySet = [];
             this.canvas = document.getElementById("myCanvas");
@@ -30,21 +30,8 @@ var demo;
             this.counter = document.getElementById("counter");
             this.startButton = document.getElementById("startButton");
             this.startButton.addEventListener("click", function () { return _this.startTicker(); });
-            // リサイズイベント
-            this.resizeHandler();
-            window.addEventListener("resize", function () { return _this.resizeHandler(); });
             this.preloadImage();
         }
-        /*
-         * リサイズのイベント処理
-         * */
-        Canvas2DBunny.prototype.resizeHandler = function () {
-            var windowWidth = window.innerWidth;
-            var windowHeight = window.innerHeight;
-            // ステージのサイズをwindowのサイズに変更
-            this.canvas.width = windowWidth;
-            this.canvas.height = windowHeight;
-        };
         /**
          * 画像のプリロード
          * */

@@ -15,9 +15,9 @@ module demo {
         /** bunnyの最小位置Y */
         private minY:number = 0;
         /** bunnyの最大位置X */
-        private maxX:number;
+        private maxX:number = 960;
         /** bunnyの最大位置Y */
-        private maxY:number;
+        private maxY:number = 540;
 
         /** bunnyの配列 */
         private bunnySet:Bunny[] = [];
@@ -31,27 +31,8 @@ module demo {
             this.startButton = <HTMLDivElement> document.getElementById("startButton");
             this.startButton.addEventListener("click", () => this.startTicker());
 
-            // リサイズイベント
-            this.resizeHandler();
-            window.addEventListener("resize", () => this.resizeHandler());
-
             this.startButton.className = "on";
 
-        }
-
-        /*
-         * リサイズのイベント処理
-         * */
-        private resizeHandler():void {
-            var windowWidth:number = window.innerWidth;
-            var windowHeight:number = window.innerHeight;
-
-            this.maxX = windowWidth;
-            this.maxY = windowHeight;
-
-            //// ステージのサイズをwindowのサイズに変更
-            //this.myDiv.style.width = windowWidth + "px";
-            //this.myDiv.height = windowHeight;
         }
 
         private startTicker():void {
@@ -65,7 +46,7 @@ module demo {
             this.counter.innerHTML = this.bunnySet.length + " BUNNYS, " + this.fps.getFPSText();
 
             if (this.fps.calculated() && this.fps.getMostRecentFrameRate() <= 30) {
-                alert(this.bunnySet.length + " BUNNYたん!");
+                alert(this.bunnySet.length + " BUNNY!");
                 return;
             }
 

@@ -22,9 +22,9 @@ module demo {
         /** bunnyの最小位置Y */
         private minY:number = 0;
         /** bunnyの最大位置X */
-        private maxX:number = document.documentElement.clientWidth;
+        private maxX:number = 960;
         /** bunnyの最大位置Y */
-        private maxY:number = document.documentElement.clientHeight;
+        private maxY:number = 540;
 
         /** bunnyの配列 */
         private bunnySet:Bunny[] = [];
@@ -35,26 +35,10 @@ module demo {
             this.fps = new FPSChecker();
             this.counter = <HTMLDivElement> document.getElementById("counter");
 
-
-
             this.startButton = <HTMLDivElement> document.getElementById("startButton");
             this.startButton.addEventListener("click", () => this.startTicker());
 
-            // リサイズイベント
-            this.resizeHandler();
-            window.addEventListener("resize", () => this.resizeHandler());
             this.preloadImage();
-        }
-
-        /*
-         * リサイズのイベント処理
-         * */
-        private resizeHandler():void {
-            var windowWidth:number = window.innerWidth;
-            var windowHeight:number = window.innerHeight;
-            // ステージのサイズをwindowのサイズに変更
-            this.canvas.width = windowWidth;
-            this.canvas.height = windowHeight;
         }
 
         /**
@@ -83,8 +67,7 @@ module demo {
             this.startButton.className = "on";
         }
 
-        private startTicker():void
-        {
+        private startTicker():void {
             this.startButton.className = "";
             createjs.Ticker.setFPS(60);
             createjs.Ticker.timingMode = createjs.Ticker.RAF;

@@ -10,6 +10,10 @@ var demo;
             this.minX = 0;
             /** bunnyの最小位置Y */
             this.minY = 0;
+            /** bunnyの最大位置X */
+            this.maxX = 960 - 26;
+            /** bunnyの最大位置Y */
+            this.maxY = 540 - 37;
             /** bunnyの配列 */
             this.bunnySet = [];
             this.myDiv = document.getElementById("myDiv");
@@ -17,23 +21,8 @@ var demo;
             this.counter = document.getElementById("counter");
             this.startButton = document.getElementById("startButton");
             this.startButton.addEventListener("click", function () { return _this.startTicker(); });
-            // リサイズイベント
-            this.resizeHandler();
-            window.addEventListener("resize", function () { return _this.resizeHandler(); });
             this.startButton.className = "on";
         }
-        /*
-         * リサイズのイベント処理
-         * */
-        Translate2DBunny.prototype.resizeHandler = function () {
-            var windowWidth = window.innerWidth;
-            var windowHeight = window.innerHeight;
-            this.maxX = windowWidth;
-            this.maxY = windowHeight;
-            //// ステージのサイズをwindowのサイズに変更
-            //this.myDiv.style.width = windowWidth + "px";
-            //this.myDiv.height = windowHeight;
-        };
         Translate2DBunny.prototype.startTicker = function () {
             this.startButton.className = "";
             this.tick();
@@ -43,7 +32,7 @@ var demo;
             this.fps.finish();
             this.counter.innerHTML = this.bunnySet.length + " BUNNYS, " + this.fps.getFPSText();
             if (this.fps.calculated() && this.fps.getMostRecentFrameRate() <= 30) {
-                alert(this.bunnySet.length + " BUNNYたん!");
+                alert(this.bunnySet.length + " BUNNY!");
                 return;
             }
             var amount = this.fps.fps >= 40 ? 2 : 1;

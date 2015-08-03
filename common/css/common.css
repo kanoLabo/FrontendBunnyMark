@@ -42,3 +42,14 @@ body
 }
 
 
+#myCanvas, #myDiv
+{
+    width: 960px;
+    height: 540px;
+    position: absolute;
+    margin-left: -480px;
+    margin-top: -270px;
+    left: 50%;
+    top: 50%;
+    border: 1px solid #f00;
+}
