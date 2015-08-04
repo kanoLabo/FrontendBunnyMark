@@ -1,6 +1,7 @@
 /// <reference path="../../common/js/FPSChecker.ts" />
 var demo;
 (function (demo) {
+    var vendor;
     var Translate2DBunny = (function () {
         function Translate2DBunny() {
             var _this = this;
@@ -16,6 +17,7 @@ var demo;
             this.maxY = 540 - 37;
             /** bunnyの配列 */
             this.bunnySet = [];
+            vendor = (/webkit/i).test(navigator.appVersion) ? 'webkit' : (/firefox/i).test(navigator.userAgent) ? 'Moz' : 'opera' in window ? 'O' : '';
             this.myDiv = document.getElementById("myDiv");
             this.fps = new FPSChecker();
             this.counter = document.getElementById("counter");
@@ -40,17 +42,16 @@ var demo;
                 var bunny = new Bunny();
                 bunny.speedX = Math.random() * 10;
                 bunny.speedY = (Math.random() * 10) - 5;
-                //bunny.alpha = 0.3 + Math.random() * 0.7;
+                bunny.alpha = 0.3 + Math.random() * 0.7;
                 this.bunnySet.push(bunny);
-                //bunny.scaleX = bunny.scaleY = 0.5 + Math.random() * 0.5;
-                //bunny.rotation = (Math.random() - 0.5);
-                //this.stage.addChild(bunny);
+                bunny.scale = 0.5 + Math.random() * 0.5;
+                bunny.rotation = (Math.random() - 0.5);
                 this.myDiv.appendChild(bunny.image);
             }
             this.fps.begin();
             for (var i = 0; i < this.bunnySet.length; i++) {
                 var bunny = this.bunnySet[i];
-                //bunny.rotation += 0.1;
+                bunny.rotation += 0.1;
                 bunny.speedY += this.gravity;
                 bunny.positionX += bunny.speedX;
                 bunny.positionY += bunny.speedY;
@@ -86,6 +87,9 @@ var demo;
             this.positionY = 0;
             this.speedX = 0;
             this.speedY = 0;
+            this.rotation = 0;
+            this.alpha = 0;
+            this.scale = 0;
             this.image = document.createElement("img");
             this.image.style.position = "absolute";
             this.image.style.left = "0";
@@ -93,7 +97,8 @@ var demo;
             this.image.src = "../common/images/bunny.png";
         }
         Bunny.prototype.updatePosition = function () {
-            this.image.style["webkitTransform"] = "translate(" + this.positionX + "px," + this.positionY + "px)";
+            this.image.style[vendor + 'Transform'] = "translate(" + this.positionX + "px, " + this.positionY + "px)" + " rotate(" + this.rotation + "deg) scale(" + this.scale + ")";
+            this.image.style.opacity = this.alpha.toString();
         };
         return Bunny;
     })();
