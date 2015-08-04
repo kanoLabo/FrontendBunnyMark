@@ -120,12 +120,9 @@ module demo {
 
         public constructor() {
             this.image = <HTMLImageElement> document.createElement("img");
-            this.image.style.position = "absolute";
-            this.image.style.left = "0";
-            this.image.style.top = "0";
             this.image.src = "../common/images/bunny.png";
         }
-
+        
         public updatePosition():void {
             this.image.style[vendor + 'Transform'] = "translate(" + this.positionX + "px, " + this.positionY + "px)"
                 + " rotate(" + this.rotation + "deg) scale(" + this.scale + ")";

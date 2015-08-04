@@ -91,9 +91,6 @@ var demo;
             this.alpha = 0;
             this.scale = 0;
             this.image = document.createElement("img");
-            this.image.style.position = "absolute";
-            this.image.style.left = "0";
-            this.image.style.top = "0";
             this.image.src = "../common/images/bunny.png";
         }
         Bunny.prototype.updatePosition = function () {
