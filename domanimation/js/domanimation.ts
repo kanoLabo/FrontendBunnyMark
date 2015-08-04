@@ -1,7 +1,7 @@
 /// <reference path="../../common/js/FPSChecker.ts" />
 module demo {
 
-    var vendor:string;
+    var transformStyleName:string;
 
     export class Translate2DBunny {
         private startButton:HTMLDivElement;
@@ -26,7 +26,17 @@ module demo {
         private bunnySet:Bunny[] = [];
 
         public constructor() {
-            vendor = (/webkit/i).test(navigator.appVersion) ? 'webkit' : (/firefox/i).test(navigator.userAgent) ? 'Moz' : 'opera' in window ? 'O' : '';
+
+            if (navigator.userAgent.indexOf("Edge") > 0)
+                transformStyleName = "transform";
+            else
+            {
+                var vendor:string = (/webkit/i).test(navigator.appVersion) ? 'webkit' : (/firefox/i).test(navigator.userAgent) ? 'Moz' : 'opera' in window ? 'O' : '';
+                if (vendor != "")
+                    transformStyleName = vendor + "Transform";
+                else
+                    transformStyleName = "transform";
+            }
 
             this.myDiv = <HTMLDivElement> document.getElementById("myDiv");
             this.fps = new FPSChecker();
@@ -122,9 +132,10 @@ module demo {
             this.image = <HTMLImageElement> document.createElement("img");
             this.image.src = "../common/images/bunny.png";
         }
-        
+
         public updatePosition():void {
-            this.image.style[vendor + 'Transform'] = "translate(" + this.positionX + "px, " + this.positionY + "px)"
+
+            this.image.style[transformStyleName] = "translate(" + this.positionX + "px, " + this.positionY + "px)"
                 + " rotate(" + this.rotation + "deg) scale(" + this.scale + ")";
             this.image.style.opacity = this.alpha.toString();
         }

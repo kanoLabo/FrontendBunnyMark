@@ -1,7 +1,7 @@
 /// <reference path="../../common/js/FPSChecker.ts" />
 var demo;
 (function (demo) {
-    var vendor;
+    var transformStyleName;
     var Translate2DBunny = (function () {
         function Translate2DBunny() {
             var _this = this;
@@ -17,7 +17,15 @@ var demo;
             this.maxY = 540 - 37;
             /** bunnyの配列 */
             this.bunnySet = [];
-            vendor = (/webkit/i).test(navigator.appVersion) ? 'webkit' : (/firefox/i).test(navigator.userAgent) ? 'Moz' : 'opera' in window ? 'O' : '';
+            if (navigator.userAgent.indexOf("Edge") > 0)
+                transformStyleName = "transform";
+            else {
+                var vendor = (/webkit/i).test(navigator.appVersion) ? 'webkit' : (/firefox/i).test(navigator.userAgent) ? 'Moz' : 'opera' in window ? 'O' : '';
+                if (vendor != "")
+                    transformStyleName = vendor + "Transform";
+                else
+                    transformStyleName = "transform";
+            }
             this.myDiv = document.getElementById("myDiv");
             this.fps = new FPSChecker();
             this.counter = document.getElementById("counter");
@@ -94,7 +102,7 @@ var demo;
             this.image.src = "../common/images/bunny.png";
         }
         Bunny.prototype.updatePosition = function () {
-            this.image.style[vendor + 'Transform'] = "translate(" + this.positionX + "px, " + this.positionY + "px)" + " rotate(" + this.rotation + "deg) scale(" + this.scale + ")";
+            this.image.style[transformStyleName] = "translate(" + this.positionX + "px, " + this.positionY + "px)" + " rotate(" + this.rotation + "deg) scale(" + this.scale + ")";
             this.image.style.opacity = this.alpha.toString();
         };
         return Bunny;
