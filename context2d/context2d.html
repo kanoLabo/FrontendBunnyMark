@@ -2,19 +2,20 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Canvas 2D</title>
+    <title>Context 2D</title>
     <link rel="stylesheet" href="../common/css/common.css"/>
 </head>
 <body>
 <div id="checkField">
-    <div id="myDiv"></div>
+    <canvas id="myCanvas" width="960" height="540"></canvas>
     <div id="counter"></div>
     <div id="startButton">
         Click to Start
     </div>
 </div>
-
+<script src="../libs/easeljs-0.8.1.min.js"></script>
+<script src="../libs/preloadjs-0.6.1.min.js"></script>
 <script src="../common/js/FPSChecker.js"></script>
-<script src="js/translate2d.js"></script>
+<script src="js/context2d.js"></script>
 </body>
 </html>
