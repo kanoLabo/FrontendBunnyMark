@@ -142,4 +142,4 @@ var demo;
 window.addEventListener("load", function (event) {
     new demo.Canvas2DBunny();
 });
-//# sourceMappingURL=context2d.js.map
+//# sourceMappingURL=html5canvas.js.map
