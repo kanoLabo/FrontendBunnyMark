@@ -3,38 +3,38 @@
 /// <reference path="../../common/js/FPSChecker.ts" />
 
 module demo {
-    export class WebGLBunny {
-        private startButton:HTMLDivElement;
-        private stage:createjs.Stage;
-        private canvas:HTMLCanvasElement;
-        private fps:FPSChecker;
 
+    /*
+     * WebGLを使ってBunnyMarkを行うクラスです。
+     */
+    export class WebGLBunny {
+        private canvas:HTMLCanvasElement;
+        private stage:createjs.SpriteStage;
+        private fps:FPSChecker;
         private loadQueue:createjs.LoadQueue;
         private spriteSheet:createjs.SpriteSheet;
-
-        /** FPS表示DOM */
-        private counter:HTMLDivElement;
-
         /** 重力 */
         private gravity:number = 0.5;
-        /** bunnyの最小位置X */
+        /** bunnyの配置X座標の最小値です。*/
         private minX:number = 0;
-        /** bunnyの最小位置Y */
+        /** bunnyの配置Y座標の最小値です。*/
         private minY:number = 0;
-        /** bunnyの最大位置X */
+        /** bunnyの配置X座標の最大値です。*/
         private maxX:number = 960;
-        /** bunnyの最大位置Y */
+        /** bunnyの配置Y座標の最大値です。*/
         private maxY:number = 540;
-
-        /** bunnyの配列 */
+        /** Bunnyクラスのインスタンスを格納する配列です */
         private bunnySet:Bunny[] = [];
+        /** FPS表示DOM要素です。*/
+        private counter:HTMLDivElement;
+        /** モーション開始ボタンのDOM要素です。 */
+        private startButton:HTMLDivElement;
 
         public constructor() {
             this.canvas = <HTMLCanvasElement> document.getElementById("myCanvas");
             this.stage = new createjs.SpriteStage(this.canvas, false, true);
 
-            if (!this.stage.isWebGL)
-            {
+            if (!this.stage.isWebGL) {
                 alert("WebGLを有効にしてください");
                 return;
             }
@@ -49,8 +49,8 @@ module demo {
         }
 
         /**
-         * 画像のプリロード
-         * */
+         * 画像のプリロードを開始します。
+         */
         private preloadImage():void {
             this.loadQueue = new createjs.LoadQueue(false);
             this.loadQueue.addEventListener("complete", (event) => this.loadCompleteHandler(event));
@@ -62,8 +62,8 @@ module demo {
         }
 
         /**
-         * プリロード完了
-         * */
+         * 画像のプリロードが完了した時に実行される処理です。
+         */
         private loadCompleteHandler(event) {
             var bunnyImage:HTMLImageElement = <HTMLImageElement> this.loadQueue.getResult("bunny");
 
@@ -74,8 +74,7 @@ module demo {
             this.startButton.className = "on";
         }
 
-        private startTicker():void
-        {
+        private startTicker():void {
             this.startButton.className = "";
             createjs.Ticker.setFPS(60);
             createjs.Ticker.timingMode = createjs.Ticker.RAF;
@@ -84,9 +83,7 @@ module demo {
 
         private tick(event) {
             this.fps.finish();
-
             this.counter.innerHTML = this.bunnySet.length + " BUNNYS, " + this.fps.getFPSText();
-
             if (this.fps.calculated() && this.fps.getMostRecentFrameRate() <= 30) {
                 alert(this.bunnySet.length + " BUNNY!");
                 createjs.Ticker.removeAllEventListeners("tick");
@@ -119,7 +116,6 @@ module demo {
                 var bunny = this.bunnySet[i];
                 bunny.rotation += 0.1;
                 bunny.speedY += this.gravity;
-
                 bunny.positionX += bunny.speedX;
                 bunny.positionY += bunny.speedY;
 
@@ -143,7 +139,6 @@ module demo {
                 }
 
                 bunny.updatePosition();
-
             }
             this.stage.update();
         }
@@ -152,10 +147,12 @@ module demo {
     class Bunny extends createjs.Sprite {
         public positionX:number = 0;
         public positionY:number = 0;
-
         public speedX:number = 0;
         public speedY:number = 0;
 
+        /*
+         * バニーの位置を更新します。
+         */
         public updatePosition():void {
             this.x = this.positionX;
             this.y = this.positionY;

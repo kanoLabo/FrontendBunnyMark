@@ -1,21 +1,28 @@
 /// <reference path="../../common/js/FPSChecker.ts" />
 var demo;
 (function (demo) {
+    /**
+     * imgタグにスタイルを設定するときのプロパティです。
+     * ブラウザによって異なるプロパティ名になります。
+     */
     var transformStyleName;
+    /*
+     * Domを使ってBunnyMarkを行うクラスです。
+     */
     var Translate2DBunny = (function () {
         function Translate2DBunny() {
             var _this = this;
             /** 重力 */
             this.gravity = 0.5;
-            /** bunnyの最小位置X */
+            /** bunnyの配置X座標の最小値です。*/
             this.minX = 0;
-            /** bunnyの最小位置Y */
+            /** bunnyの配置Y座標の最小値です。*/
             this.minY = 0;
-            /** bunnyの最大位置X */
+            /** bunnyの配置X座標の最大値です。*/
             this.maxX = 960 - 26;
-            /** bunnyの最大位置Y */
+            /** bunnyの配置Y座標の最大値です。*/
             this.maxY = 540 - 37;
-            /** bunnyの配列 */
+            /** Bunnyクラスのインスタンスを格納する配列です。 */
             this.bunnySet = [];
             if (navigator.userAgent.indexOf("Edge") > 0)
                 transformStyleName = "transform";
@@ -89,6 +96,10 @@ var demo;
         return Translate2DBunny;
     })();
     demo.Translate2DBunny = Translate2DBunny;
+    /*
+     * バニーのクラスです。
+     * 実際に表示されるのはimageプロパティに格納されたHTMLImageElementです。
+     */
     var Bunny = (function () {
         function Bunny() {
             this.positionX = 0;
@@ -101,6 +112,9 @@ var demo;
             this.image = document.createElement("img");
             this.image.src = "../common/images/bunny.png";
         }
+        /*
+         * バニーの位置を更新します。
+         */
         Bunny.prototype.updatePosition = function () {
             this.image.style[transformStyleName] = "translate(" + this.positionX + "px, " + this.positionY + "px)" + " rotate(" + this.rotation + "deg) scale(" + this.scale + ")";
             this.image.style.opacity = this.alpha.toString();

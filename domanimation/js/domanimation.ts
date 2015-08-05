@@ -1,36 +1,39 @@
 /// <reference path="../../common/js/FPSChecker.ts" />
 module demo {
-
+    /**
+     * imgタグにスタイルを設定するときのプロパティです。
+     * ブラウザによって異なるプロパティ名になります。
+     */
     var transformStyleName:string;
 
+    /*
+     * Domを使ってBunnyMarkを行うクラスです。
+     */
     export class Translate2DBunny {
-        private startButton:HTMLDivElement;
         private myDiv:HTMLDivElement;
         private fps:FPSChecker;
-
-        /** FPS表示DOM */
-        private counter:HTMLDivElement;
-
         /** 重力 */
         private gravity:number = 0.5;
-        /** bunnyの最小位置X */
+        /** bunnyの配置X座標の最小値です。*/
         private minX:number = 0;
-        /** bunnyの最小位置Y */
+        /** bunnyの配置Y座標の最小値です。*/
         private minY:number = 0;
-        /** bunnyの最大位置X */
+        /** bunnyの配置X座標の最大値です。*/
         private maxX:number = 960 - 26;
-        /** bunnyの最大位置Y */
+        /** bunnyの配置Y座標の最大値です。*/
         private maxY:number = 540 - 37;
-
-        /** bunnyの配列 */
+        /** Bunnyクラスのインスタンスを格納する配列です。 */
         private bunnySet:Bunny[] = [];
+        /** FPS表示DOM要素です。*/
+        private counter:HTMLDivElement;
+        /** モーション開始ボタンのDOM要素です。 */
+        private startButton:HTMLDivElement;
 
         public constructor() {
 
             if (navigator.userAgent.indexOf("Edge") > 0)
                 transformStyleName = "transform";
-            else
-            {
+            else {
                 var vendor:string = (/webkit/i).test(navigator.appVersion) ? 'webkit' : (/firefox/i).test(navigator.userAgent) ? 'Moz' : 'opera' in window ? 'O' : '';
                 if (vendor != "")
                     transformStyleName = vendor + "Transform";
@@ -44,9 +47,7 @@ module demo {
 
             this.startButton = <HTMLDivElement> document.getElementById("startButton");
             this.startButton.addEventListener("click", () => this.startTicker());
-
             this.startButton.className = "on";
-
         }
 
         private startTicker():void {
@@ -107,24 +108,22 @@ module demo {
                 }
 
                 bunny.updatePosition();
-
             }
-
             window.requestAnimationFrame(() => this.tick());
         }
     }
 
+    /*
+     * バニーのクラスです。
+     * 実際に表示されるのはimageプロパティに格納されたHTMLImageElementです。
+     */
     class Bunny {
         public image:HTMLImageElement;
-
         public positionX:number = 0;
         public positionY:number = 0;
-
         public speedX:number = 0;
         public speedY:number = 0;
-
         public rotation:number = 0;
-
         public alpha:number = 0;
         public scale:number = 0;
 
@@ -133,8 +132,10 @@ module demo {
             this.image.src = "../common/images/bunny.png";
         }
 
+        /*
+         * バニーの位置を更新します。
+         */
         public updatePosition():void {
-
             this.image.style[transformStyleName] = "translate(" + this.positionX + "px, " + this.positionY + "px)"
                 + " rotate(" + this.rotation + "deg) scale(" + this.scale + ")";
             this.image.style.opacity = this.alpha.toString();

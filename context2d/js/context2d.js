@@ -9,20 +9,23 @@ var __extends = this.__extends || function (d, b) {
 };
 var demo;
 (function (demo) {
+    /*
+     * HTML5 Canvasを使ってBunnyMarkを行うクラスです。
+     */
     var Canvas2DBunny = (function () {
         function Canvas2DBunny() {
             var _this = this;
             /** 重力 */
             this.gravity = 0.5;
-            /** bunnyの最小位置X */
+            /** bunnyの配置X座標の最小値です。*/
             this.minX = 0;
-            /** bunnyの最小位置Y */
+            /** bunnyの配置Y座標の最小値です。*/
             this.minY = 0;
-            /** bunnyの最大位置X */
+            /** bunnyの配置X座標の最大値です。*/
             this.maxX = 960;
-            /** bunnyの最大位置Y */
+            /** bunnyの配置Y座標の最大値です。*/
             this.maxY = 540;
-            /** bunnyの配列 */
+            /** Bunnyクラスのインスタンスを格納する配列です */
             this.bunnySet = [];
             this.canvas = document.getElementById("myCanvas");
             this.stage = new createjs.Stage(this.canvas);
@@ -33,8 +36,8 @@ var demo;
             this.preloadImage();
         }
         /**
-         * 画像のプリロード
-         * */
+         * 画像のプリロードを開始します。
+         */
         Canvas2DBunny.prototype.preloadImage = function () {
             var _this = this;
             this.loadQueue = new createjs.LoadQueue(false);
@@ -45,8 +48,8 @@ var demo;
             this.loadQueue.load();
         };
         /**
-         * プリロード完了
-         * */
+         * 画像のプリロードが完了した時に実行される処理です。
+         */
         Canvas2DBunny.prototype.loadCompleteHandler = function (event) {
             var bunnyImage = this.loadQueue.getResult("bunny");
             this.spriteSheet = new createjs.SpriteSheet({
@@ -114,6 +117,9 @@ var demo;
         return Canvas2DBunny;
     })();
     demo.Canvas2DBunny = Canvas2DBunny;
+    /*
+     * 画面上に表示されるバニーのクラスです。
+     */
     var Bunny = (function (_super) {
         __extends(Bunny, _super);
         function Bunny() {
@@ -123,6 +129,9 @@ var demo;
             this.speedX = 0;
             this.speedY = 0;
         }
+        /*
+         * バニーの位置を更新します。
+         */
         Bunny.prototype.updatePosition = function () {
             this.x = this.positionX;
             this.y = this.positionY;
