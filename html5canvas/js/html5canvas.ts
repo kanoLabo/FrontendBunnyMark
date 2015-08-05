@@ -92,7 +92,7 @@ module demo {
                 bunny.alpha = 0.3 + Math.random() * 0.7;
                 this.bunnySet.push(bunny);
                 bunny.scaleX = bunny.scaleY = 0.5 + Math.random() * 0.5;
-                bunny.rotation = (Math.random() - 0.5);
+                bunny.rotation = (Math.random() - 0.5) * 50;
                 this.stage.addChild(bunny);
             }
 
@@ -100,7 +100,7 @@ module demo {
 
             for (var i = 0; i < this.bunnySet.length; i++) {
                 var bunny = this.bunnySet[i];
-                bunny.rotation += 0.1;
+
                 bunny.speedY += this.gravity;
                 bunny.positionX += bunny.speedX;
                 bunny.positionY += bunny.speedY;
