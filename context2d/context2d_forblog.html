@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Context 2D</title>
+    <link rel="stylesheet" href="../common/css/common.css"/>
+    <style>
+        html, body
+        {
+            background-color: #fff;
+        }
+        #checkField {
+            height: 540px;
+            margin-top: -270px;
+            -webkit-box-shadow:none;
+            -moz-box-shadow:none;
+            box-shadow:none;
+            -webkit-border-radius:0;
+            -moz-border-radius:0;
+            border-radius:0;
+        }
+        #checkField #canvasBox
+        {
+            height: 538px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div id="checkField">
+    <div id="canvasBox">
+        <canvas id="myCanvas" width="960" height="540"></canvas>
+        <div id="counter"></div>
+        <div id="startButton">
+            Click to Start
+        </div>
+    </div>
+</div>
+<script src="../libs/easeljs-0.8.1.min.js"></script>
+<script src="../libs/preloadjs-0.6.1.min.js"></script>
+<script src="../common/js/FPSChecker.js"></script>
+<script src="js/context2d.js"></script>
+</body>
+</html>
