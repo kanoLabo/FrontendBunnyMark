@@ -2,9 +2,12 @@ html, body {
   background-color: #4E4E4E;
 }
 
-body {
+* {
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: "Hiragino Kaku Gothic Pro", "Osaka", "Meiryo", "MS PGothic", sans-serif;
   font-size: 12px;
   font-size: 1.2rem;
@@ -29,25 +32,19 @@ body {
   border-radius: 5px;
 
   h1 {
-    font-size: 10px;
-    font-size: 1.0rem;
-    height: 20px;
+    font-size: 8px;
+    font-size: 0.8rem;
+    height: 18px;
     line-height: 20px;
     text-align: center;
     font-weight: normal;
-    margin-top: 0;
-    margin-bottom: 0;
-
-    padding-top: 2px;
     border: 1px solid #979797;
     border-radius: 5px 5px 0 0;
-
     background: #e7e7e7;
     background: -moz-linear-gradient(top, #e7e7e7 0%, #d0d0d0 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e7e7e7), color-stop(100%, #d0d0d0));
     background: -webkit-linear-gradient(top, #e7e7e7 0%, #d0d0d0 100%);
     background: linear-gradient(to bottom, #e7e7e7 0%, #d0d0d0 100%);
-
   }
 
   #canvasBox {
@@ -55,7 +52,7 @@ body {
     border-right: 1px solid #979797;
     border-bottom: 1px solid #979797;
     background-color: #fff;
-    height: 540px;
+    height: 539px;
     position: relative;
   }
 
@@ -89,8 +86,7 @@ body {
     }
   }
 
-  #myDiv img
-  {
+  #myDiv img {
     position: absolute;
     left: 0;
     top: 0;
