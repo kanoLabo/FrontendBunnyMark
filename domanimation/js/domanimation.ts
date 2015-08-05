@@ -13,7 +13,6 @@ module demo {
     export class Translate2DBunny {
         private myDiv:HTMLDivElement;
         private fps:FPSChecker;
-        /** 重力 */
         private gravity:number = 0.5;
         /** bunnyの配置X座標の最小値です。*/
         private minX:number = 0;

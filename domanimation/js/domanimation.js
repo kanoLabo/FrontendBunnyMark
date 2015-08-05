@@ -12,7 +12,6 @@ var demo;
     var Translate2DBunny = (function () {
         function Translate2DBunny() {
             var _this = this;
-            /** 重力 */
             this.gravity = 0.5;
             /** bunnyの配置X座標の最小値です。*/
             this.minX = 0;

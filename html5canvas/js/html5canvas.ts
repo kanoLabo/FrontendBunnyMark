@@ -13,7 +13,6 @@ module demo {
         private fps:FPSChecker;
         private loadQueue:createjs.LoadQueue;
         private spriteSheet:createjs.SpriteSheet;
-        /** 重力 */
         private gravity:number = 0.5;
         /** bunnyの配置X座標の最小値です。*/
         private minX:number = 0;
