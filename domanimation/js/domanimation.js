@@ -6,7 +6,7 @@ var demo;
      * ブラウザによって異なるプロパティ名になります。
      */
     var transformStyleName;
-    /*
+    /**
      * Domを使ってBunnyMarkを行うクラスです。
      */
     var Translate2DBunny = (function () {
@@ -96,7 +96,7 @@ var demo;
         return Translate2DBunny;
     })();
     demo.Translate2DBunny = Translate2DBunny;
-    /*
+    /**
      * バニーのクラスです。
      * 実際に表示されるのはimageプロパティに格納されたHTMLImageElementです。
      */
@@ -112,7 +112,7 @@ var demo;
             this.image = document.createElement("img");
             this.image.src = "../common/images/bunny.png";
         }
-        /*
+        /**
          * バニーの位置を更新します。
          */
         Bunny.prototype.updatePosition = function () {

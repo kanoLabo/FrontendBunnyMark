@@ -9,7 +9,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var demo;
 (function (demo) {
-    /*
+    /**
      * WebGLを使ってBunnyMarkを行うクラスです。
      */
     var WebGLBunny = (function () {
@@ -136,7 +136,7 @@ var demo;
             this.speedX = 0;
             this.speedY = 0;
         }
-        /*
+        /**
          * バニーの位置を更新します。
          */
         Bunny.prototype.updatePosition = function () {

@@ -9,7 +9,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var demo;
 (function (demo) {
-    /*
+    /**
      * HTML5 Canvasを使ってBunnyMarkを行うクラスです。
      */
     var Canvas2DBunny = (function () {
@@ -117,7 +117,7 @@ var demo;
         return Canvas2DBunny;
     })();
     demo.Canvas2DBunny = Canvas2DBunny;
-    /*
+    /**
      * 画面上に表示されるバニーのクラスです。
      */
     var Bunny = (function (_super) {
@@ -129,7 +129,7 @@ var demo;
             this.speedX = 0;
             this.speedY = 0;
         }
-        /*
+        /**
          * バニーの位置を更新します。
          */
         Bunny.prototype.updatePosition = function () {

@@ -4,7 +4,7 @@
 
 module demo {
 
-    /*
+    /**
      * WebGLを使ってBunnyMarkを行うクラスです。
      */
     export class WebGLBunny {
@@ -150,7 +150,7 @@ module demo {
         public speedX:number = 0;
         public speedY:number = 0;
 
-        /*
+        /**
          * バニーの位置を更新します。
          */
         public updatePosition():void {

@@ -4,7 +4,7 @@
 
 module demo {
 
-    /*
+    /**
      * HTML5 Canvasを使ってBunnyMarkを行うクラスです。
      */
     export class Canvas2DBunny {
@@ -131,7 +131,7 @@ module demo {
         }
     }
 
-    /*
+    /**
      * 画面上に表示されるバニーのクラスです。
      */
     class Bunny extends createjs.Sprite {
@@ -140,7 +140,7 @@ module demo {
         public speedX:number = 0;
         public speedY:number = 0;
 
-        /*
+        /**
          * バニーの位置を更新します。
          */
         public updatePosition():void {

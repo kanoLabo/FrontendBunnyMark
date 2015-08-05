@@ -1,12 +1,13 @@
 /// <reference path="../../common/js/FPSChecker.ts" />
 module demo {
+
     /**
      * imgタグにスタイルを設定するときのプロパティです。
      * ブラウザによって異なるプロパティ名になります。
      */
     var transformStyleName:string;
 
-    /*
+    /**
      * Domを使ってBunnyMarkを行うクラスです。
      */
     export class Translate2DBunny {
@@ -113,7 +114,7 @@ module demo {
         }
     }
 
-    /*
+    /**
      * バニーのクラスです。
      * 実際に表示されるのはimageプロパティに格納されたHTMLImageElementです。
      */
@@ -132,7 +133,7 @@ module demo {
             this.image.src = "../common/images/bunny.png";
         }
 
-        /*
+        /**
          * バニーの位置を更新します。
          */
         public updatePosition():void {
