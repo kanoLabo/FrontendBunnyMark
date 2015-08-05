@@ -32,6 +32,13 @@ module demo {
         public constructor() {
             this.canvas = <HTMLCanvasElement> document.getElementById("myCanvas");
             this.stage = new createjs.SpriteStage(this.canvas, false, true);
+
+            if (!this.stage.isWebGL)
+            {
+                alert("WebGLを有効にしてください");
+                return;
+            }
+
             this.fps = new FPSChecker();
             this.counter = <HTMLDivElement> document.getElementById("counter");
 
@@ -86,7 +93,14 @@ module demo {
                 return;
             }
 
-            var amount:number = this.fps.fps >= 40 ? 5 : 1;
+            var amount:number;
+
+            if (this.fps.fps >= 40)
+                amount = 30;
+            else if (this.fps.fps >= 35)
+                amount = 10;
+            else
+                amount = 3;
 
             for (var i = 0; i < amount; i++) {
                 var bunny:Bunny = new Bunny(this.spriteSheet);

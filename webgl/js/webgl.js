@@ -1,7 +1,7 @@
 /// <reference path="../../dts/easeljs/easeljs.d.ts" />
 /// <reference path="../../dts/preloadjs/preloadjs.d.ts" />
 /// <reference path="../../common/js/FPSChecker.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
+var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -26,6 +26,10 @@ var demo;
             this.bunnySet = [];
             this.canvas = document.getElementById("myCanvas");
             this.stage = new createjs.SpriteStage(this.canvas, false, true);
+            if (!this.stage.isWebGL) {
+                alert("WebGLを有効にしてください");
+                return;
+            }
             this.fps = new FPSChecker();
             this.counter = document.getElementById("counter");
             this.startButton = document.getElementById("startButton");
@@ -70,7 +74,13 @@ var demo;
                 createjs.Ticker.removeAllEventListeners("tick");
                 return;
             }
-            var amount = this.fps.fps >= 40 ? 5 : 1;
+            var amount;
+            if (this.fps.fps >= 40)
+                amount = 30;
+            else if (this.fps.fps >= 35)
+                amount = 10;
+            else
+                amount = 3;
             for (var i = 0; i < amount; i++) {
                 var bunny = new Bunny(this.spriteSheet);
                 bunny.speedX = Math.random() * 10;
